@@ -36,10 +36,10 @@
             border-radius: 5px;
         }
         .bullying {
-            background-color: #dc3545; /* Red */
+            background-color: #dc3545;
         }
         .non-bullying {
-            background-color: #28a745; /* Green */
+            background-color: #28a745;
         }
     </style>
 </head>
@@ -73,10 +73,13 @@
             </div>
             <button type="submit" class="btn btn-success btn-block">Analyze</button>
         </form>
-        
-        {% if category is not none %}
-            <div class="result {% if category == 'Not Bullying' %}non-bullying{% else %}bullying{% endif %}">
-                {{ category }}
+        {% if prediction is not none %}
+            <div class="result {% if prediction == 1 %}bullying{% else %}non-bullying{% endif %}">
+                {% if prediction == 1 %}
+                    Bullying
+                {% else %}
+                    Non-Bullying
+                {% endif %}
             </div>
         {% endif %}
     </div>
