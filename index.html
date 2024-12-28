@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyberbullying Detection Using Python</title>
+    <title>Cyberbullying Detection</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #e3c2f5;
+            background-color: #f8f9fa;
         }
         .container {
             max-width: 800px;
@@ -18,13 +18,13 @@
         .static-title {
             font-size: 2.5rem;
             font-weight: bold;
-            color: #791aad;
+            color: #6828a7;
             text-align: center;
             margin-bottom: 20px;
         }
         .form-control {
             height: 200px;
-            border: 2px solid #791aad;
+            border: 2px solid #28a745;
             font-size: 1.2rem;
         }
         .result {
@@ -36,10 +36,10 @@
             border-radius: 5px;
         }
         .bullying {
-            background-color: #dc3545; /* Red */
+            background-color: #dc3545;
         }
         .non-bullying {
-            background-color: #28a745; /* Green */
+            background-color: #28a745;
         }
     </style>
 </head>
@@ -73,10 +73,13 @@
             </div>
             <button type="submit" class="btn btn-success btn-block">Analyze</button>
         </form>
-
-        {% if category is not none %}
-            <div class="result {% if category == 'Not Bullying' %}non-bullying{% else %}bullying{% endif %}">
-                {{ category }}
+        {% if prediction is not none %}
+            <div class="result {% if prediction == 1 %}bullying{% else %}non-bullying{% endif %}">
+                {% if prediction == 1 %}
+                    Bullying
+                {% else %}
+                    Non-Bullying
+                {% endif %}
             </div>
         {% endif %}
     </div>
@@ -87,4 +90,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
